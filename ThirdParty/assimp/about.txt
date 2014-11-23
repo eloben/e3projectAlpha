@@ -1,0 +1,2 @@
+Assimp v3.1.1 (Jun 2014)
+http://assimp.sourceforge.net/

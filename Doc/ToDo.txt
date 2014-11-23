@@ -1,0 +1,12 @@
+[Engine]
+- Add Super frame constant buffer to add super frame constants such as: ambient light, depth bias, etc.
+- Matrix4 use Column Major to avoid StructuredBuffer transposition.
+- Add normal mapping.
+- Add visibility determination.
+
+[Gpu]
+- Add support for Texture3D
+- Add support for Cubemap
+
+[eCore]
+- Improve Push / Pop mechanism on CharList.

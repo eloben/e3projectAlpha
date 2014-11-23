@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\EnginePch.h" />
+    <ClInclude Include="..\Include\Graphics\Frustum.h" />
+    <ClInclude Include="..\Include\Graphics\IResourceBuffer.h" />
+    <ClInclude Include="..\Include\Graphics\Render.h" />
+    <ClInclude Include="..\Include\Graphics\IConstantBuffer.h" />
+    <ClInclude Include="..\Include\Graphics\IRenderManager.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\CameraHandler.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\ICamera.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\ILight.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\ILightPoint.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\ILightSpot.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\ILogicComponent.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IMaterial.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IMesh.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IObject.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IRenderer.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\ISceneManager.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IShadowComponent.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IView.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\IWorld.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\MeshBuffer.h" />
+    <ClInclude Include="..\Include\Graphics\Scene\Scene.h" />
+    <ClInclude Include="..\Include\Graphics\Vertex.h" />
+    <ClInclude Include="..\Include\Input\IInputManager.h" />
+    <ClInclude Include="..\Include\Input\Input.h" />
+    <ClInclude Include="..\Source\Graphics\ConstantBuffer.h" />
+    <ClInclude Include="..\Source\Graphics\ResourceBuffer.h" />
+    <ClInclude Include="..\Source\Graphics\RenderManager.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\Camera.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\ForwardRenderer.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\Light.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\LightPoint.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\LightSpot.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\LogicComponent.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\Mesh.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\MeshHelper.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\Material.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\ObjectCore.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\ObjectGroup.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\SceneManager.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\ScenePipeline.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\ShadowComponent.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\View.h" />
+    <ClInclude Include="..\Source\Graphics\Scene\World.h" />
+    <ClInclude Include="..\Source\Input\InputManager.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="eEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\EnginePch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\ConstantBuffer.cpp" />
+    <ClCompile Include="..\Source\Graphics\Frustum.cpp" />
+    <ClCompile Include="..\Source\Graphics\ResourceBuffer.cpp" />
+    <ClCompile Include="..\Source\Graphics\RenderManager.cpp" />
+    <ClCompile Include="..\Source\Graphics\Render.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\Camera.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\CameraHandler.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\ForwardRenderer.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\Light.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\LightPoint.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\LightSpot.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\LogicComponent.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\Mesh.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\MeshHelper.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\Material.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\ObjectCore.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\ObjectGroup.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\Scene.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\SceneManager.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\ShadowComponent.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\View.cpp" />
+    <ClCompile Include="..\Source\Graphics\Scene\World.cpp" />
+    <ClCompile Include="..\Source\Input\Input.cpp" />
+    <ClCompile Include="..\Source\Input\InputManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\eGraphics\Build\eGraphics.vcxproj">
+      <Project>{3ec17d44-2fd3-48ab-8c1c-44dde8fc6192}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\eCore\Build\eCore.vcxproj">
+      <Project>{034a0ed9-8616-4be8-98ca-340c71edc4d2}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Data\Shaders\ForwardLightPass.hlsl" />
+    <None Include="..\..\..\Data\Shaders\ForwardPass.hlsl" />
+    <None Include="..\..\..\Data\Shaders\Lighting.hlsl" />
+    <None Include="..\..\..\Data\Shaders\Conversion.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Data\Shaders\Fixed\PositionColor.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">VS</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CEAD94A0-0F5D-4624-8837-BE1D32FAE3BE}</ProjectGuid>
+    <RootNamespace>Utilities</RootNamespace>
+    <ProjectName>eEngine</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Bin\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\Obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Bin\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\Obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)D</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)$(Platform)D</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName)$(Platform)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Include;..\..\eCore\Include;..\..\eGraphics\Include;..\..\..\ThirdParty\assimp\include;..\..\..\ThirdParty\vld\include;$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>E_SETTING_DYNAMIC_LIBRARY; WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EnginePch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>xcopy /Y "..\..\..\ThirdParty\assimp\bin\x86\*.*" "$(OutDir)"</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>assimp.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\ThirdParty\assimp\lib\x86;..\..\..\ThirdParty\vld\lib\x86</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Include;..\..\eCore\Include;..\..\eGraphics\Include;..\..\..\ThirdParty\assimp\include;..\..\..\ThirdParty\vld\include;$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>E_SETTING_DYNAMIC_LIBRARY; WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EnginePch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>xcopy /Y "..\..\..\ThirdParty\assimp\bin\x64\*.*" "$(OutDir)"</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\ThirdParty\assimp\lib\x64;..\..\..\ThirdParty\vld\lib\x64</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\Include;..\..\eCore\Include;..\..\eGraphics\Include;..\..\..\ThirdParty\assimp\include;..\..\..\ThirdParty\vld\include;$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>E_SETTING_DYNAMIC_LIBRARY; WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EnginePch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>xcopy /Y "..\..\..\ThirdParty\assimp\bin\x86\*.*" "$(OutDir)"</Command>
+    </PostBuildEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\ThirdParty\assimp\lib\x86</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\Include;..\..\eCore\Include;..\..\eGraphics\Include;..\..\..\ThirdParty\assimp\include;..\..\..\ThirdParty\vld\include;$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>E_SETTING_DYNAMIC_LIBRARY; WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EnginePch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>xcopy /Y "..\..\..\ThirdParty\assimp\bin\x64\*.*" "$(OutDir)"</Command>
+    </PostBuildEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\ThirdParty\assimp\lib\x64</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

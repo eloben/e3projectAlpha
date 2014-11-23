@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Private">
+      <UniqueIdentifier>{b2e48c2c-5f9f-4dde-86d0-6c60f7c3a277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{49db8827-7e3b-46ad-a3c6-51a2ac1d7f7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Graphics">
+      <UniqueIdentifier>{f7e08b56-4671-4ef9-b39e-92652c3cc725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Graphics">
+      <UniqueIdentifier>{b678416d-e18c-4f30-bf74-88f884f2e758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Input">
+      <UniqueIdentifier>{5d38e9b6-9256-4ace-9ca3-d1a989e4053b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Input">
+      <UniqueIdentifier>{d5a9887e-c502-4af7-bb4e-2da941554360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\HLSL">
+      <UniqueIdentifier>{747c643c-78c6-4d55-9381-57074fb2db37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Graphics\Scene">
+      <UniqueIdentifier>{07d64a22-5ef8-4e9c-9e0f-203be238eeb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Graphics\Scene">
+      <UniqueIdentifier>{ad82f482-be17-49c1-b8ff-8494bbe2d792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\HLSL\Fixed">
+      <UniqueIdentifier>{52331a2f-da82-465d-8d15-504eeec22771}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\Include\EnginePch.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Input\InputManager.h">
+      <Filter>Private\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Input\IInputManager.h">
+      <Filter>Public\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Input\Input.h">
+      <Filter>Public\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\ResourceBuffer.h">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\ConstantBuffer.h">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\RenderManager.h">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Vertex.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\IConstantBuffer.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\IRenderManager.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\IResourceBuffer.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Render.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\Camera.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\ForwardRenderer.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\LightPoint.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\LightSpot.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\LogicComponent.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\Mesh.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\MeshHelper.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\ObjectCore.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\ObjectGroup.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\SceneManager.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\ScenePipeline.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\ShadowComponent.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\View.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\ICamera.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\ILightPoint.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\ILightSpot.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\ILogicComponent.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IMesh.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IObject.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IRenderer.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\ISceneManager.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IShadowComponent.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IView.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\MeshBuffer.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\Scene.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\CameraHandler.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\Light.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\ILight.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IMaterial.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\Material.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Scene\IWorld.h">
+      <Filter>Public\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Graphics\Scene\World.h">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Graphics\Frustum.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="eEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\EnginePch.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Input\InputManager.cpp">
+      <Filter>Private\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Input\Input.cpp">
+      <Filter>Private\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\ConstantBuffer.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Render.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\RenderManager.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\ResourceBuffer.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\Camera.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\ForwardRenderer.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\LightPoint.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\LightSpot.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\LogicComponent.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\Mesh.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\MeshHelper.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\ObjectCore.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\ObjectGroup.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\Scene.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\SceneManager.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\ShadowComponent.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\View.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\CameraHandler.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\Light.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\Material.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Scene\World.cpp">
+      <Filter>Private\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Graphics\Frustum.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Data\Shaders\Conversion.hlsl">
+      <Filter>Public\HLSL</Filter>
+    </None>
+    <None Include="..\..\..\Data\Shaders\Lighting.hlsl">
+      <Filter>Public\HLSL</Filter>
+    </None>
+    <None Include="..\..\..\Data\Shaders\ForwardPass.hlsl">
+      <Filter>Public\HLSL</Filter>
+    </None>
+    <None Include="..\..\..\Data\Shaders\ForwardLightPass.hlsl">
+      <Filter>Public\HLSL</Filter>
+    </None>
+    <None Include="..\..\..\Data\Shaders\Fixed\PositionColor.hlsl">
+      <Filter>Public\HLSL\Fixed</Filter>
+    </None>
+  </ItemGroup>
+</Project>
