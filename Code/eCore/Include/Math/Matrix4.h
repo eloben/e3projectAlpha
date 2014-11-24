@@ -891,16 +891,12 @@ inline Vector3<T> Matrix4<T>::RotateVector(const Matrix4& m, const Vector3<T>& v
 template <typename T>
 inline Vector3<T> Matrix4<T>::TransformPoint(const Matrix4& m, const Vector3<T>& p)
 {
-  Vector4<T> v(p.x, p.y, p.z, static_cast<T>(1));
-  Vector4<T> r(
-    m[0] * v.x + m[4] * v.y +  m[8] * v.z + m[12] * v.w,
-    m[1] * v.x + m[5] * v.y +  m[9] * v.z + m[13] * v.w,
-    m[2] * v.x + m[6] * v.y + m[10] * v.z + m[14] * v.w,
-    m[3] * v.x + m[7] * v.y + m[11] * v.z + m[15] * v.w); 
-
-  if (IsEqual(r.w, static_cast<T>(0)) || IsEqual(r.w, static_cast<T>(1))) return Vector3<T>(r.x, r.y, r.z);
-  const T invW = 1 / r.w;
-  return Vector3<T>(r.x * invW, r.y * invW, r.z * invW);
+  const T w = m[3] * p.x + m[7] * p.y + m[11] * p.z + m[15];
+  const T invW = IsEqual(w, static_cast<T>(0)) ? static_cast<T>(1) : static_cast<T>(1) / w;
+  return Vector3<T>(
+    (m[0] * p.x + m[4] * p.y +  m[8] * p.z + m[12]) * invW,
+    (m[1] * p.x + m[5] * p.y +  m[9] * p.z + m[13]) * invW,
+    (m[2] * p.x + m[6] * p.y + m[10] * p.z + m[14]) * invW);
 }
 
 template <typename T>

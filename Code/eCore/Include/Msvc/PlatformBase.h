@@ -117,22 +117,15 @@ Macro definitions (debug)
 #define E_PLATFORM_FUNCTION __FUNCTION__
 #define E_PLATFORM_LINE __LINE__
 
-  #define E_PLATFORM_DEBUG_OUTPUT OutputDebugStringA
-
 #ifdef _DEBUG
-  #define E_PLATFORM_DEBUG 1
-
+  #define E_PLATFORM_DEBUG
+  #define E_PLATFORM_DEBUG_OUTPUT OutputDebugStringA
   #define E_PLATFORM_DEBUG_ANALYSIS_ASSUME(condition) __analysis_assume(condition)
   #define E_PLATFORM_DEBUG_BREAK { __debugbreak(); }
   #define E_PLATFORM_DEBUG_BREAK_VERBOSE(file, line, function, expression, message) \
     if (_CrtDbgReport(_CRT_ASSERT, file, line, nullptr, "'%s'\nMessage: \t%s\nFunction: \t%s", expression, message, function) != 0) \
         { E_PLATFORM_DEBUG_BREAK; }
-#else
-  #define E_PLATFORM__ANALYSIS_ASSUME(condition)
-  #define E_PLATFORM_DEBUG_BREAK
-  #define E_PLATFORM_DEBUG_BREAK_VERBOSE(file, line, function, expression, message)
 #endif
-
 
 namespace E
 {

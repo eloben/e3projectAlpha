@@ -176,29 +176,30 @@ bool Graphics::DX11Shader::Initialize(const Descriptor& desc)
 		  0,
 		  &pCompiledShader,
 		  &pErrorMessage) == S_OK)
-	  {
+	    {
+        HRESULT hr = 0;
         switch (i)
         {
         case eStageVertex:
-          E_ASSERT(pDXDevice->CreateVertexShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXVertexShader) == S_OK);
+          hr = pDXDevice->CreateVertexShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXVertexShader);
           break;
         case eStageHull:
-          E_ASSERT(pDXDevice->CreateHullShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXHullShader) == S_OK);
+          hr = pDXDevice->CreateHullShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXHullShader);
           break;
         case eStageDomain:
-          E_ASSERT(pDXDevice->CreateDomainShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXDomainShader) == S_OK);
+          hr = pDXDevice->CreateDomainShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXDomainShader);
           break;
         case eStageGeometry:
-          E_ASSERT(pDXDevice->CreateGeometryShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXGeometryShader) == S_OK);
+          hr = pDXDevice->CreateGeometryShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXGeometryShader);
           break;
         case eStagePixel:
-          E_ASSERT(pDXDevice->CreatePixelShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXPixelShader) == S_OK);
+          hr = pDXDevice->CreatePixelShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXPixelShader);
           break;
         case eStageCompute:
-          E_ASSERT(pDXDevice->CreateComputeShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXComputeShader) == S_OK);
+          hr = pDXDevice->CreateComputeShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), nullptr, &mpDXComputeShader);
           break;
         }
-
+        E_ASSERT(hr == S_OK);
         Win32::ReleaseCom(pCompiledShader);
         Win32::ReleaseCom(pErrorMessage);
       }

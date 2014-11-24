@@ -220,7 +220,7 @@ void Graphics::Scene::ObjectCore::RemoveChild(const IObjectInstance& child)
 #ifdef E_DEBUG
   E_ASSERT_MSG(mChildrenList.RemoveIfFast(child), E_ASSERT_MSG_SCENE_OBJECT_CORE_CHILD_INVALID);
 #else
-  mChildrenList.RemoveIfFast(object);
+  mChildrenList.RemoveIfFast(child);
 #endif
   child->SetParent(kNullObject);
 }

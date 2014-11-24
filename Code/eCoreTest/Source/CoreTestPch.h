@@ -124,6 +124,30 @@ This file defines includes all the headers required by the Utilities test applic
 ----------------------------------------------------------------------------------------------------------------------*/
 #ifdef E_DEBUG
   #include <vld.h>
+
+  #define E_DEBUG_MATRIX4(matrix) \
+        { \
+  E::StringBuffer sb; \
+  sb << E_TO_STR(matrix); \
+  for (U32 i = 0; i < 4; ++i) \
+      { \
+  sb << "\n"; \
+  for (U32 j = 0; j < 4; ++j) sb << matrix(i, j) << ", "; \
+      } \
+  sb << "\n"; \
+  E_DEBUG_OUTPUT(sb.GetPtr()); \
+        }\
+
+  #define E_DEBUG_VECTOR4(vector) \
+        { \
+  E::StringBuffer sb; \
+  sb << E_TO_STR(vector); \
+  sb << " " << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << "\n"; \
+  E_DEBUG_OUTPUT(sb.GetPtr()); \
+        }
+#else
+  #define E_DEBUG_MATRIX4
+  #define E_DEBUG_VECTOR4
 #endif
 
 // Known warning: using D3DX from DX June 2010 SDK which conflicts with Windows SDK
@@ -131,26 +155,5 @@ This file defines includes all the headers required by the Utilities test applic
 #pragma warning (disable:4005)
 #include <d3dx10math.h>
 #pragma warning(pop)
-
-#define E_DEBUG_MATRIX4(matrix) \
-  { \
-  E::StringBuffer sb; \
-  sb << E_TO_STR(matrix); \
-  for (U32 i = 0; i < 4; ++i) \
-  { \
-  sb << "\n"; \
-  for (U32 j = 0; j < 4; ++j) sb << matrix(i, j) << ", "; \
-  } \
-  sb << "\n"; \
-  E_DEBUG_OUTPUT(sb.GetPtr()); \
-  }\
-
-#define E_DEBUG_VECTOR4(vector) \
-  { \
-  E::StringBuffer sb; \
-  sb << E_TO_STR(vector); \
-  sb << " " << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << "\n"; \
-  E_DEBUG_OUTPUT(sb.GetPtr()); \
-  }\
 
 #endif

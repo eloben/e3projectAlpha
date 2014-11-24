@@ -140,7 +140,6 @@ bool Graphics::DX11VertexLayout::Initialize(const Descriptor& desc)
       WString errorMessageWstr;
       Text::Utf8ToWide(errorMessageWstr, String((char*)pErrorMessage->GetBufferPointer()));
       MessageBox(0, errorMessageWstr.GetPtr(), 0, 0);
-      E_DEBUG_OUTPUT(dummyShaderBuffer.GetPtr());
     }
     return false;
   }
