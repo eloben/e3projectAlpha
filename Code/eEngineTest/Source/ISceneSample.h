@@ -40,6 +40,7 @@ namespace E
   public:
     virtual       ~ISceneSample() {}
 
+    virtual void  SetActive(bool b) = 0;
     virtual void  Load(Graphics::Scene::IViewInstance window) = 0;
     virtual void	Unload() = 0;
     virtual void	Update() = 0;

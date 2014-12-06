@@ -34,12 +34,17 @@ This file declares the CameraHandler class.
 #ifndef E3_CAMERA_HANDLER_H
 #define E3_CAMERA_HANDLER_H
 
-#include <Input/IInputManager.h>
 #include <Graphics/Scene/ICamera.h>
 #include <Graphics/Scene/ILogicComponent.h>
 
 namespace E 
 {
+  namespace Application
+  {
+    // Forward reference
+    class InputManager;
+}
+
 namespace Graphics
 {
 namespace Scene
@@ -52,10 +57,11 @@ class CameraHandler : public ILogicHandler
 public:
   enum MoveDirection
   {
-    eForward      = 1,
-    eBackwards    = 2,
-    eStrafeLeft   = 4,
-    eStrafeRight  = 8
+    eMoveDirectionNone = 0,
+    eMoveDirectionForward      = 1,
+    eMoveDirectionBackwards    = 2,
+    eMoveDirectionLeft   = 4,
+    eMoveDirectionRight  = 8
   };
 
   E_API CameraHandler();
@@ -65,17 +71,23 @@ public:
   E_API void                    SetSensitivity(F32 sensitivity);
   E_API void                    SetSpeed(F32 unitsPerSecond);
 
+  E_API void                    Move(MoveDirection dir);
+  E_API void                    SetActive(bool b);
+
   // Callback methods
   void                          OnLoad();
   void                          OnUnload();
   void                          OnUpdate(const TimeValue& deltaTime);
 
 private:
+  U8                 mMove;
   ICameraInstance               mCamera;
-  Input::IInputManagerInstance  mInputManager;
+  Application::InputManager&    mInputManager;
   Vector2i                      mLastCursorPosition;
+  Vector3f                      mTranslation;
   F32                           mSpeed;
   F32                           mSensitivity;
+  bool mActive;
   
   E_DISABLE_COPY_AND_ASSSIGNMENT(CameraHandler)
 };

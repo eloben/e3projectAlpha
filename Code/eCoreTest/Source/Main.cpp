@@ -64,7 +64,7 @@ void SafeCastTest()
 void main()
 {
 	try
-	{
+  {/*
     Test::Array::Run();
     Test::DynamicArray::Run();
     Test::List::Run();
@@ -88,7 +88,8 @@ void main()
     Test::Algorithm::Run();
     Test::File::Run();
     Test::WeakPtr::Run();
-    Test::GarbageCollection::Run();
+    Test::GarbageCollection::Run();*/
+    Test::ConditionVariable::Run();
 
     // VLD leak test (comment out to catch actual memory leaks)
     //int* pVldLeakTest = E_NEW(int);
@@ -113,7 +114,7 @@ void main()
       std::cout << "Custom exception [" << testException.type << "] test Ok!" << std::endl;
     }
 
-    //std::cin.get();    
+    std::cin.get();    
 	}
 	catch(Exception& ex)
 	{

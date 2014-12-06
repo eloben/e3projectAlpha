@@ -115,6 +115,7 @@ This file defines includes all the headers required by the Utilities test applic
 #include "Test/SmartPointers/IntrusivePtr.h"
 #include "Test/SmartPointers/SharedPtr.h"
 #include "Test/SmartPointers/WeakPtr.h"
+#include "Test/Threads/ConditionVariable.h"
 #include "Test/Threads/Thread.h"
 #include "Test/EventSystem/Event.h"
 #include "Test/Math/Algorithm.h"

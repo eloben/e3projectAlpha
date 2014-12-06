@@ -35,7 +35,7 @@ This file declares the ChildMeshSample class.
 
 namespace E
 {
-  class ChildMeshSample : public TriangleSample
+  class ChildMeshSample : public SampleBase
   {
   public:
     ChildMeshSample();

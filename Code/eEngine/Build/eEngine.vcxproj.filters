@@ -13,12 +13,6 @@
     <Filter Include="Private\Graphics">
       <UniqueIdentifier>{b678416d-e18c-4f30-bf74-88f884f2e758}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Public\Input">
-      <UniqueIdentifier>{5d38e9b6-9256-4ace-9ca3-d1a989e4053b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Private\Input">
-      <UniqueIdentifier>{d5a9887e-c502-4af7-bb4e-2da941554360}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Public\HLSL">
       <UniqueIdentifier>{747c643c-78c6-4d55-9381-57074fb2db37}</UniqueIdentifier>
     </Filter>
@@ -36,15 +30,6 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="..\Include\EnginePch.h">
       <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Input\InputManager.h">
-      <Filter>Private\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Include\Input\IInputManager.h">
-      <Filter>Public\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Include\Input\Input.h">
-      <Filter>Public\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Graphics\ResourceBuffer.h">
       <Filter>Private\Graphics</Filter>
@@ -176,12 +161,6 @@
   <ItemGroup>
     <ClCompile Include="..\Source\EnginePch.cpp">
       <Filter>Private</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Input\InputManager.cpp">
-      <Filter>Private\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Input\Input.cpp">
-      <Filter>Private\Input</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Graphics\ConstantBuffer.cpp">
       <Filter>Private\Graphics</Filter>

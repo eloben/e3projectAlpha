@@ -99,6 +99,7 @@ private:
   typedef Memory::AbstractFactory<IObjectComponent, LogicComponent>   LogicComponentFactory;
   typedef Memory::AbstractFactory<IObjectComponent, ShadowComponent>  ShadowComponentFactory;
 
+  Application::InputManager&        mInputManager;
   Graphics::IRenderManagerInstance  mRenderManager;
   IRendererFactory                  mRendererFactory;
   WorldFactory                      mWorldFactory;

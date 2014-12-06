@@ -100,12 +100,10 @@ void MaterialSample::Load(IViewInstance window)
 
 void MaterialSample::Update()
 {
-  Input::IInputManagerInstance pInputManager = Input::Global::GetInputManager();
-
   F32 step = static_cast<F32>(mTimer.Reset().GetMilliseconds());
-  if (pInputManager->IsKeyDown(VK_ADD) || pInputManager->IsKeyDown(VK_SUBTRACT))
+  if (mInputManager.IsKeyDown(VK_ADD) || mInputManager.IsKeyDown(VK_SUBTRACT))
   {
-    if (pInputManager->IsKeyDown(VK_SUBTRACT)) step = -step;
+    if (mInputManager.IsKeyDown(VK_SUBTRACT)) step = -step;
     mLight->Rotate(Vector3f(0.0f, step * 0.1f, 0.0f));
   }
 }

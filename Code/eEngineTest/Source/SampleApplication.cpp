@@ -39,8 +39,8 @@ SampleApplication initialization & finalization
 ----------------------------------------------------------------------------------------------------------------------*/
 
 SampleApplication::SampleApplication()
-  : mSceneManager(Graphics::Scene::Global::GetSceneManager())
-  , mInputManager(Input::Global::GetInputManager())
+  : mInputManager(Application::Global::GetInputManager())
+  , mSceneManager(Graphics::Scene::Global::GetSceneManager())
   , mCurrentSampleIndex(0) {}
 
 SampleApplication::~SampleApplication()
@@ -48,7 +48,7 @@ SampleApplication::~SampleApplication()
   mSceneManager->Finalize();
 }
 
-void SampleApplication::Initialize(U32 windowWidth, U32 windowHeight)
+void SampleApplication::Initialize(U32 width, U32 height)
 {
   // Configure render settings
   Graphics::IRenderManager::Settings& renderSettings = Graphics::Global::GetRenderManager()->GetSettings();
@@ -63,23 +63,23 @@ void SampleApplication::Initialize(U32 windowWidth, U32 windowHeight)
 
   // Create main window
   Application::Application& app = Application::Global::GetApplication();
-  mpWindow = app.CreateMainWindow(windowWidth, windowHeight);
+  mpWindow = app.CreateMainWindow(width, height);
   mpWindow->GetUpdateEventCallback() += this;
   mpWindow->GetKeyDownEventCallback() += this;
+  mpWindow->GetFocusEventCallback() += this;
+  mpWindow->GetFocusLostEventCallback() += this;
 
   const Application::IWindow::Descriptor& windowDesc = mpWindow->GetDescriptor();
   mSceneManager->SetView(
     Graphics::Scene::ISceneManager::eViewID0,
-    windowDesc.windowHandle,
-    windowDesc.windowWidth,
-    windowDesc.windowHeight,
-    windowDesc.windowMode == Application::IWindow::eModeFullScreen);
+    windowDesc.handle,
+    windowDesc.width,
+    windowDesc.height,
+    windowDesc.mode == Application::IWindow::eModeFullScreen);
 
   mMainView = mSceneManager->GetView(Graphics::Scene::ISceneManager::eViewID0);
   ThrowIf(mMainView == nullptr, Exception::eExceptionTypeEngineTest);
 
-  // Link scene window to input manager
-  Input::Global::GetInputManager()->SetCurrentViewport(mMainView->GetViewState().viewport);
 
   // Add samples
   mSampleList.PushBack(&mTriangleSample);
@@ -99,12 +99,27 @@ void SampleApplication::Initialize(U32 windowWidth, U32 windowHeight)
   E_ASSERT(mCurrentSampleIndex < mSampleList.GetCount());
   mSampleList[mCurrentSampleIndex]->Load(mMainView);
 
+  GDebugWindow::GetInstance().Initialize(width, height);
+
   app.Run();
 }
 
 /*----------------------------------------------------------------------------------------------------------------------
 SampleApplication private methods
 ----------------------------------------------------------------------------------------------------------------------*/
+
+void SampleApplication::OnEvent(const Application::FocusEvent&)
+{
+  // Link scene window to input manager
+  mInputManager.SetActiveWindow(mpWindow);
+  mSampleList[mCurrentSampleIndex]->SetActive(true);
+
+}
+
+void SampleApplication::OnEvent(const Application::FocusLostEvent&)
+{
+  mSampleList[mCurrentSampleIndex]->SetActive(false);
+}
 
 void SampleApplication::OnEvent(const Application::UpdateEvent&)
 {

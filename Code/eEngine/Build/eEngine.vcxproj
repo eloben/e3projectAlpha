@@ -42,8 +42,6 @@
     <ClInclude Include="..\Include\Graphics\Scene\MeshBuffer.h" />
     <ClInclude Include="..\Include\Graphics\Scene\Scene.h" />
     <ClInclude Include="..\Include\Graphics\Vertex.h" />
-    <ClInclude Include="..\Include\Input\IInputManager.h" />
-    <ClInclude Include="..\Include\Input\Input.h" />
     <ClInclude Include="..\Source\Graphics\ConstantBuffer.h" />
     <ClInclude Include="..\Source\Graphics\ResourceBuffer.h" />
     <ClInclude Include="..\Source\Graphics\RenderManager.h" />
@@ -63,7 +61,6 @@
     <ClInclude Include="..\Source\Graphics\Scene\ShadowComponent.h" />
     <ClInclude Include="..\Source\Graphics\Scene\View.h" />
     <ClInclude Include="..\Source\Graphics\Scene\World.h" />
-    <ClInclude Include="..\Source\Input\InputManager.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -98,8 +95,6 @@
     <ClCompile Include="..\Source\Graphics\Scene\ShadowComponent.cpp" />
     <ClCompile Include="..\Source\Graphics\Scene\View.cpp" />
     <ClCompile Include="..\Source\Graphics\Scene\World.cpp" />
-    <ClCompile Include="..\Source\Input\Input.cpp" />
-    <ClCompile Include="..\Source\Input\InputManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\eGraphics\Build\eGraphics.vcxproj">

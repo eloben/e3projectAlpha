@@ -35,7 +35,7 @@ This file declares the MaterialSample class.
 
 namespace E
 {
-  class MaterialSample : public MouseCameraSample
+  class MaterialSample : public SampleBase
   {
   public:
     MaterialSample() {}

@@ -149,12 +149,11 @@ void LightShadowSample::Load(IViewInstance window)
 
 void LightShadowSample::Update()
 {
-  Input::IInputManagerInstance pInputManager = Input::Global::GetInputManager();
   /*
   F32 step = static_cast<F32>(mTimer.Reset().GetMilliseconds());
-  if (pInputManager->IsKeyDown(VK_ADD) || pInputManager->IsKeyDown(VK_SUBTRACT))
+  if (mInputManager.IsKeyDown(VK_ADD) || mInputManager.IsKeyDown(VK_SUBTRACT))
   {
-    if (pInputManager->IsKeyDown(VK_SUBTRACT)) step = -step;
+    if (mInputManager.IsKeyDown(VK_SUBTRACT)) step = -step;
     //mSceneManager->GetRenderer()->SetSlopeScaledDepthBias(0.0001f * step);
    
     //mCutOffAngle = Math::Clamp(mCutOffAngle + step * 0.02f, 0.0f, 60.0f);

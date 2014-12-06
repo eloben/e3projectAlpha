@@ -35,7 +35,7 @@ This file declares the VertexFormatSample class.
 
 namespace E
 {
-  class VertexFormatSample : public TriangleSample
+  class VertexFormatSample : public SampleBase
   {
   public:
     VertexFormatSample() {}

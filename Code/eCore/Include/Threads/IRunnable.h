@@ -46,7 +46,7 @@ class IRunnable
 {
 public:
   virtual     ~IRunnable() {}
-  virtual I32	Run() = 0;
+  virtual I32 Run() = 0;
 };
 }
 }

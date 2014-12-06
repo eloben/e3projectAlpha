@@ -41,7 +41,7 @@ namespace E
     RenderTestApplication();
     ~RenderTestApplication();
 
-    void    		                          Initialize(U32 windowWidth, U32 windowHeight);
+    void    		                          Initialize(U32 width, U32 height);
 
 
   private:

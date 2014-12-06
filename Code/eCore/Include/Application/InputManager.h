@@ -27,47 +27,54 @@ DEALINGS IN THE SOFTWARE.
 // $Date: $
 // $Author: $
 
-/** @file IInputManager.h
+/** @file InputManager.h
 This file defines the InputManager interface. The InputManager allows communication with keyboard and mouse input devices.
 */
 
-#ifndef E3_IINPUT_MANAGER_H
-#define E3_IINPUT_MANAGER_H
+#ifndef E3_INPUT_MANAGER_H
+#define E3_INPUT_MANAGER_H
 
 #include <Math/Vector2.h>
-#include <Memory/GarbageCollection.h>
+#include <Singleton.h>
 
 namespace E 
 {
-namespace Graphics
+namespace Application
 {
 // Forward declarations
-struct IViewport::Descriptor;
+class InputManager;
+/*----------------------------------------------------------------------------------------------------------------------
+Input::Global methods
+----------------------------------------------------------------------------------------------------------------------*/
+namespace Global
+{
+  E_API InputManager& GetInputManager();
 }
 
-namespace Input
-{
+// Forward declarations
+class IWindow;
 /*----------------------------------------------------------------------------------------------------------------------
-IInputManager
+InputManager
 ----------------------------------------------------------------------------------------------------------------------*/
-class IInputManager
+class InputManager
 {
 public:
-  virtual                 ~IInputManager() {}
-  
-  virtual const Vector2i& GetCursonPosition() const = 0;
-  virtual bool			      IsKeyDown(U8 v) const = 0;
-  virtual bool			      IsKeyReleased(U8 v) const = 0;
-  virtual void            SetCurrentViewport(Graphics::IViewportInstance viewport) = 0;
+  // Accessors
+  E_API const Vector2i& GetCursorPosition() const;
+  E_API bool			      IsKeyDown(U8 key) const;
+  E_API bool            IsKeyReleased(U8 key) const;
+  E_API bool			      IsKeyUp(U8 key) const;
+  E_API void            SetActiveWindow(IWindow* pWindow);
 
-  virtual void			      CenterCursor() = 0;
-  virtual void            Update() = 0;
+  // Methods
+  E_API void			      CenterCursor();
+  E_API void            Update();
+
+private:
+  E_PIMPL mpImpl;
+
+  E_DECLARE_SINGLETON_ONLY(InputManager)
 };
-
-/*----------------------------------------------------------------------------------------------------------------------
-IInputManager types
-----------------------------------------------------------------------------------------------------------------------*/
-typedef Memory::GCRef<IInputManager> IInputManagerInstance;
 }
 }
 

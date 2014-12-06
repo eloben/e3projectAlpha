@@ -35,11 +35,11 @@ This file declares the HighlightSample class.
 
 namespace E
 {
-  class HighlightSample : public MouseCameraSample
+  class HighlightSample : public SampleBase
   {
   public:
     HighlightSample() {}
- 
+
     virtual void            Load(Graphics::Scene::IViewInstance window);
     virtual void	          Update();
 

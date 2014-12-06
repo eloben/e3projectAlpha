@@ -64,7 +64,8 @@ SceneManager initialization & finalization
 ----------------------------------------------------------------------------------------------------------------------*/
 
 Graphics::Scene::SceneManager::SceneManager()
-  : mRenderManager(Graphics::Global::GetRenderManager())
+  : mInputManager(Application::Global::GetInputManager())
+  , mRenderManager(Graphics::Global::GetRenderManager())
 {
   // Register types
   mRendererFactory.Register(&mForwardRendererFactory, IRenderer::eRendererTypeForward);
@@ -219,6 +220,8 @@ Graphics::Scene::IObjectGroupInstance Graphics::Scene::SceneManager::CreateGroup
 
 void Graphics::Scene::SceneManager::Update()
 {
+  mInputManager.Update();
+
   // Get elapsed time
   TimeValue currentTime = mTimer.GetElapsed();
   TimeValue deltaTime = currentTime - mPreviousTime;    
@@ -229,8 +232,7 @@ void Graphics::Scene::SceneManager::Update()
   {
     if (mViews[i])
     {
-      Input::Global::GetInputManager()->SetCurrentViewport(mViews[i]->GetViewState().viewport);
-      Input::Global::GetInputManager()->Update();
+     // mInputManager.SetCurrentViewport(mViews[i]->GetViewState().viewport);
       mViews[i]->Update(deltaTime);  
     }
   }

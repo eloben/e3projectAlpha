@@ -31,62 +31,78 @@ DEALINGS IN THE SOFTWARE.
 This file defines the InputManager class.
 */
 
-#include <EnginePch.h>
-#include "InputManager.h"
+#include <CorePch.h>
+#include "InputManagerImpl.h"
 
-using namespace E;
-
+namespace E
+{
+namespace Application
+{
 /*----------------------------------------------------------------------------------------------------------------------
 Public initialization / finalization
 ------------------------------------------------------------------------------------------------------------------------*/
 
-Input::InputManager::InputManager()
+InputManager::Impl::Impl()
   : mKeys()
   , mLastKeys() {}
+
+//InputManager::Impl::~Impl() {}
 
 /*----------------------------------------------------------------------------------------------------------------------
 IInputManager Accessors
 ------------------------------------------------------------------------------------------------------------------------*/
 
-const Vector2i& Input::InputManager::GetCursonPosition() const
+const Vector2i& InputManager::Impl::GetCursorPosition() const
 {
 	return mCursorPosition;
 }
 
-bool Input::InputManager::IsKeyDown(U8 v) const
+bool InputManager::Impl::IsKeyDown(U8 key) const
 {
-	if (mKeys[v] & 0x80) return true;
+	if (mKeys[key] & 0x80) return true;
 	return false;
 }
 
-bool Input::InputManager::IsKeyReleased(U8 v) const
+bool InputManager::Impl::IsKeyReleased(U8 key) const
 {
-	if (!(mKeys[v] & 0x80) && mLastKeys[v] & 0x80)	return true;
-	return false;
+  if (!(mKeys[key] & 0x80) && mLastKeys[key] & 0x80)	return true;
+  return false;
 }
 
-void Input::InputManager::SetCurrentViewport(Graphics::IViewportInstance viewport)
+bool InputManager::Impl::IsKeyUp(U8 key) const
 {
-  mViewportDescriptor = viewport->GetDescriptor();
+  return !IsKeyDown(key);
+}
+
+void InputManager::Impl::SetActiveWindow(IWindow* pWindow)
+{
+  mWindowDescriptor = pWindow->GetDescriptor();
+
+  // Retrieve the cursor position
+  POINT cursorPosition;
+  ::GetCursorPos(&cursorPosition);
+
+  mCursorPosition.x = cursorPosition.x;
+  mCursorPosition.y = cursorPosition.y;
 }
 
 /*----------------------------------------------------------------------------------------------------------------------
 Public Methods
 ------------------------------------------------------------------------------------------------------------------------*/
 
-void Input::InputManager::CenterCursor()
+void InputManager::Impl::CenterCursor()
 {
 	// Retrieve the windows location
 	RECT rc;
-	::GetWindowRect(static_cast<HWND>(mViewportDescriptor.windowHandle), &rc);
+	::GetWindowRect(static_cast<HWND>(mWindowDescriptor.handle), &rc);
 
-	mCursorPosition.x = rc.left + mViewportDescriptor.width / 2;  
-	mCursorPosition.y = rc.top + mViewportDescriptor.height / 2; 
+	mCursorPosition.x = rc.left + mWindowDescriptor.width / 2;  
+	mCursorPosition.y = rc.top + mWindowDescriptor.height / 2; 
 
 	::SetCursorPos(mCursorPosition.x , mCursorPosition.y);  
 }
 
-void Input::InputManager::Update()
+void InputManager::Impl::Update()
 {
 	// Update last keys
   Memory::Copy(&mLastKeys[0], &mKeys[0], kKeyBufferSize);
@@ -100,11 +116,13 @@ void Input::InputManager::Update()
 
 	// Retrieve windows location
 	RECT rc;
-	::GetWindowRect(static_cast<HWND>(mViewportDescriptor.windowHandle), &rc);
+	::GetWindowRect(static_cast<HWND>(mWindowDescriptor.handle), &rc);
 
 	if (cursorPosition.x >= rc.left && cursorPosition.x <= rc.right && cursorPosition.y >= rc.top && cursorPosition.y <= rc.bottom)
 	{
 		mCursorPosition.x = cursorPosition.x;
 		mCursorPosition.y = cursorPosition.y;
 	}
+}
+}
 }

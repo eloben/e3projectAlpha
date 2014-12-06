@@ -41,18 +41,20 @@ namespace E
     SampleApplication();
     ~SampleApplication();
 
-    void    		                      Initialize(U32 windowWidth, U32 windowHeight);
+    void    		                      Initialize(U32 width, U32 height);
 
   private:
     friend Application::IWindow::KeyDownEventCallback;
     friend Application::IWindow::UpdateEventCallback;
+    friend Application::IWindow::FocusEventCallback;
+    friend Application::IWindow::FocusLostEventCallback;
 
     typedef Containers::List<ISceneSample*> SampleList;
 
     SampleList                        mSampleList;
     Application::IWindow*             mpWindow;
+    Application::InputManager&      mInputManager;
     Graphics::Scene::ISceneManagerInstance   mSceneManager;
-    Input::IInputManagerInstance      mInputManager;
     Graphics::Scene::IViewInstance         mMainView;
     U32                               mCurrentSampleIndex;
     TriangleSample                    mTriangleSample, mTriangleSample2;
@@ -68,6 +70,8 @@ namespace E
     LightSpotShadowSample             mLightSpotShadowSample;
     LightShadowSample            mLightShadowSample;
     // Callback methods
+    void                                  OnEvent(const Application::FocusEvent& event);
+    void                                  OnEvent(const Application::FocusLostEvent& event);
     void                                  OnEvent(const Application::UpdateEvent& event);
     void                                  OnEvent(const Application::KeyDownEvent& event);
 

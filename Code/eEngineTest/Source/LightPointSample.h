@@ -35,7 +35,7 @@ This file declares the LightPointSample class.
 
 namespace E
 {
-  class LightPointSample : public MouseCameraSample
+  class LightPointSample : public SampleBase
   {
   public:
                                 LightPointSample() {}

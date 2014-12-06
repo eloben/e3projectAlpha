@@ -27,46 +27,78 @@ DEALINGS IN THE SOFTWARE.
 // $Date: $
 // $Author: $
 
-/** @file InputManager.h
-This file declares the InputManager class.
+/** @file InputManager.cpp
+This file defines the InputManager class.
 */
 
-#ifndef E3_INPUT_MANAGER_H
-#define E3_INPUT_MANAGER_H
+#include <CorePch.h>
+#ifdef WIN32
+#include "Win32/InputManagerImpl.h"
+#endif
 
-namespace E 
+namespace E
 {
-namespace Input
+namespace Application
 {
 /*----------------------------------------------------------------------------------------------------------------------
-IInputManager
+Application::Global methods
 ----------------------------------------------------------------------------------------------------------------------*/
-class InputManager : public IInputManager
+
+InputManager& Global::GetInputManager()
 {
-public:
-  InputManager();
-
-  // Accessors
-  const Vector2i&                 GetCursonPosition() const;
-  bool			                      IsKeyDown(U8 v) const;
-  bool			                      IsKeyReleased(U8 v) const;
-  void                            SetCurrentViewport(Graphics::IViewportInstance viewport);
-
-  // Methods
-  void			                      CenterCursor();
-  void			                      Update();
-
-private:
-  static const U32                kKeyBufferSize = 256;
-
-  Graphics::IViewport::Descriptor mViewportDescriptor;
-  U8				                      mKeys[kKeyBufferSize];
-  U8				                      mLastKeys[kKeyBufferSize];
-  Vector2i		                    mCursorPosition;
-
-  E_DISABLE_COPY_AND_ASSSIGNMENT(InputManager)
-};
-}
+  return Singleton<InputManager>::GetInstance();
 }
 
-#endif
+/*----------------------------------------------------------------------------------------------------------------------
+InputManager private initialization / finalization
+------------------------------------------------------------------------------------------------------------------------*/
+
+InputManager::InputManager()
+  : mpImpl(new Impl()) {}
+
+InputManager::~InputManager() {}
+
+/*----------------------------------------------------------------------------------------------------------------------
+InputManager accessors
+------------------------------------------------------------------------------------------------------------------------*/
+
+const Vector2i& InputManager::GetCursorPosition() const
+{
+  return mpImpl->GetCursorPosition();
+}
+
+bool InputManager::IsKeyDown(U8 key) const
+{
+  return mpImpl->IsKeyDown(key);
+}
+
+bool InputManager::IsKeyReleased(U8 key) const
+{
+  return mpImpl->IsKeyReleased(key);
+}
+
+bool InputManager::IsKeyUp(U8 key) const
+{
+  return mpImpl->IsKeyUp(key);
+}
+
+void InputManager::SetActiveWindow(IWindow* pWindow)
+{
+  mpImpl->SetActiveWindow(pWindow);
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+Public Methods
+------------------------------------------------------------------------------------------------------------------------*/
+
+void InputManager::CenterCursor()
+{
+  mpImpl->CenterCursor();
+}
+
+void InputManager::Update()
+{
+  mpImpl->Update();
+}
+}
+}

@@ -336,6 +336,12 @@
     <ClInclude Include="..\..\..\ThirdParty\pugixml\pugixml.hpp">
       <Filter>Private\ThirdParty\pugixml</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\Application\InputManager.h">
+      <Filter>Public\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Application\Win32\InputManagerImpl.h">
+      <Filter>Private\Application\Win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Threads\Mutex.cpp">
@@ -397,6 +403,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\ThirdParty\pugixml\pugixml.cpp">
       <Filter>Private\ThirdParty\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Application\InputManager.cpp">
+      <Filter>Private\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Application\Win32\InputManagerImpl.cpp">
+      <Filter>Private\Application\Win32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

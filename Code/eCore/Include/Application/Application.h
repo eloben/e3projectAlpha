@@ -31,7 +31,7 @@ application initialization allowing creation of several windows.
 #ifndef E3_APPLICATION_H
 #define E3_APPLICATION_H
 
-#include <Application/Input.h>
+#include "Input.h"
 #include <EventSystem/Event.h>
 #include <Singleton.h>
 #include <Text/String.h>
@@ -144,17 +144,17 @@ public:
 
   struct Descriptor
   {
-    String    windowTitle;
-    Ptr       windowHandle;
-    U32       windowWidth; 
-    U32       windowHeight;
-    Mode      windowMode;
+    String    title;
+    Ptr       handle;
+    U32       width; 
+    U32       height;
+    Mode      mode;
 
     Descriptor()
-      : windowHandle(0)
-      , windowWidth(0)
-      , windowHeight(0)
-      , windowMode(eModeDefault) {}
+      : handle(0)
+      , width(0)
+      , height(0)
+      , mode(eModeDefault) {}
   }; 
 
   virtual ~IWindow() {}

@@ -47,54 +47,97 @@ DebugWindow initialization & finalization
 ----------------------------------------------------------------------------------------------------------------------*/
 
 DebugWindow::DebugWindow()
-  : mSceneManager(Global::GetSceneManager())
+  : mInputManager(Application::Global::GetInputManager())
+  , mSceneManager(Global::GetSceneManager())
   , mCameraHandlerOwner(&mCameraHandler) {}
 
 DebugWindow::~DebugWindow() {}
 
-void DebugWindow::Initialize(Win::Application& ownerApplication)
+void DebugWindow::Initialize(U32 width, U32 height)
 {
+/*
+  / ** /
   // Create debug window
   Win::Application::WindowDescriptor debugViewDesc;
   debugViewDesc.windowTitle = "Debug View";
-  debugViewDesc.windowWidth = ownerApplication.GetMainWindowDescriptor().windowWidth / kInvDebugViewToParentSizeRatio;
-  debugViewDesc.windowHeight = ownerApplication.GetMainWindowDescriptor().windowHeight / kInvDebugViewToParentSizeRatio;
+  debugViewDesc.width = ownerApplication.GetMainWindowDescriptor().width / kInvDebugViewToParentSizeRatio;
+  debugViewDesc.height = ownerApplication.GetMainWindowDescriptor().height / kInvDebugViewToParentSizeRatio;
   debugViewDesc.windowMode = Win::Application::eWindowModeDefault;
-  debugViewDesc.pWindowHandler = &GDebugView::GetInstance();
-  ownerApplication.CreateChildWindow(debugViewDesc);
-}
+  debugViewDesc.pWindowHandler = &GDebugWindow::GetInstance();
+  ownerApplication.CreateChildWindow(debugViewDesc);*/
 
-/*----------------------------------------------------------------------------------------------------------------------
-DebugWindow methods
-----------------------------------------------------------------------------------------------------------------------*/
+  // Create main window
+  Application::Application& app = Application::Global::GetApplication();
+  mpWindow = app.CreateChildWindow(width, height);
+  mpWindow->GetUpdateEventCallback() += this;
+  mpWindow->GetKeyDownEventCallback() += this;
+  mpWindow->GetFocusEventCallback() += this;
+  mpWindow->GetFocusLostEventCallback() += this;
 
-void DebugWindow::OnWindowCreate(Ptr windowHandle, U32 windowWidth, U32 windowHeight, bool fullScreen)
-{
-  // Create debug window
+  const Application::IWindow::Descriptor& windowDesc = mpWindow->GetDescriptor();
   mSceneManager->SetView(
-    Graphics::Scene::ISceneManager::eViewID1, 
-    windowHandle, 
-    windowWidth, 
-    windowHeight, 
-    fullScreen);
+    Graphics::Scene::ISceneManager::eViewID1,
+    windowDesc.handle,
+    windowDesc.width,
+    windowDesc.height,
+    false);
 
   mView = mSceneManager->GetView(ISceneManager::eViewID1);
   ThrowIf(mView == nullptr, Exception::eExceptionTypeEngineTest);
 
   mCamera = mSceneManager->CreateObject(IObject::eObjectTypeCamera);
-  mCamera->SetProjectionType(ICamera::eProjectionTypeOrthographic);
-  mCamera->SetViewportDimensions(windowWidth, windowHeight); // create viewport double size to match the main viewport
-  mCamera->Translate(Vector3f(0.0f, 0.0f, -1.0f));
+  //mCamera->SetProjectionType(ICamera::eProjectionTypeOrthographic);
+  mCamera->SetProjectionType(ICamera::eProjectionTypePerspective);
+  mCamera->SetViewportDimensions(width, height); // create viewport double size to match the main viewport
+  mCamera->Translate(Vector3f(0.0f, 0.0f, -40.0f));
   ILogicComponentInstance cameraLogicComponent = mSceneManager->CreateComponent(IObjectComponent::eComponentTypeLogic);
   mCameraHandler.SetCamera(mCamera);
+  mCameraHandler.SetSpeed(50.0f);
   cameraLogicComponent->SetHandler(mCameraHandlerOwner);
   mCamera->AddComponent(cameraLogicComponent);
   mView->SetCamera(mCamera);
 }
 
-void DebugWindow::OnWindowDestroy()
+/*----------------------------------------------------------------------------------------------------------------------
+DebugWindow private methods
+----------------------------------------------------------------------------------------------------------------------*/
+
+void DebugWindow::OnEvent(const Application::FocusEvent&)
 {
-  mView = nullptr;
+  mInputManager.SetActiveWindow(mpWindow);
+  mCameraHandler.SetActive(true);
 }
 
-void DebugWindow::OnWindowUpdate() {}
+void DebugWindow::OnEvent(const Application::FocusLostEvent&)
+{
+  mCameraHandler.SetActive(false);
+}
+void DebugWindow::OnEvent(const Application::UpdateEvent&)
+{
+
+}
+
+void DebugWindow::OnEvent(const Application::KeyDownEvent& event)
+{
+  if (event.key == Application::Input::eKeyEscape)
+  {
+    Application::Global::GetApplication().DestroyWindow(mpWindow);
+  }
+  if (event.key == Application::Input::eKeyR)
+  {
+    mCamera->SetOrientation(Vector3f(0.0f, 0.0f, 0.0f));
+    mCamera->SetPosition(Vector3f(0.0f, 0.0f, -50.0f));
+  }
+
+//   switch (event.key)
+//   {
+//   case Application::Input::eKeyW: mCameraHandler.Move(CameraHandler::eMoveDirectionForward);
+//     break;
+//   case Application::Input::eKeyS: mCameraHandler.Move(CameraHandler::eMoveDirectionBackwards);
+//     break;
+//   case Application::Input::eKeyA: mCameraHandler.Move(CameraHandler::eMoveDirectionLeft);
+//     break;
+//   case Application::Input::eKeyD: mCameraHandler.Move(CameraHandler::eMoveDirectionRight);
+//     break;
+//   }
+}

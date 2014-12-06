@@ -191,10 +191,10 @@
   <ItemGroup>
     <ClCompile Include="..\Source\ChildMeshSample.cpp" />
     <ClCompile Include="..\Source\DebugWindow.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Source\LightSample.cpp" />
     <ClCompile Include="..\Source\EngineTestPch.cpp">
@@ -241,6 +241,7 @@
     <ClInclude Include="..\Source\LightPointSample.h" />
     <ClInclude Include="..\Source\SampleApplication.h" />
     <ClInclude Include="..\Source\LightSpotSample.h" />
+    <ClInclude Include="..\Source\SampleBase.h" />
     <ClInclude Include="..\Source\TriangleSample.h" />
     <ClInclude Include="..\Source\VertexFormatSample.h" />
   </ItemGroup>

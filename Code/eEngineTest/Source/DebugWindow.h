@@ -40,22 +40,30 @@ namespace E
   public:
                                   DebugWindow();
                                   ~DebugWindow();
-    void                          Initialize();
+  void    		                      Initialize(U32 width, U32 height);
 
   private:
+    friend Application::IWindow::KeyDownEventCallback;
+    friend Application::IWindow::UpdateEventCallback;
+    friend Application::IWindow::FocusEventCallback;
+    friend Application::IWindow::FocusLostEventCallback;
+
+    Application::InputManager&      mInputManager;
+    Application::IWindow*             mpWindow;
     Graphics::Scene::ISceneManagerInstance  mSceneManager;
     Graphics::Scene::IViewInstance          mView;
     Graphics::Scene::ICameraInstance        mCamera;
     Graphics::Scene::CameraHandler          mCameraHandler;
     Graphics::Scene::CameraHandlerOwner     mCameraHandlerOwner;
 
-    void    		                  OnWindowCreate(Ptr windowHandle, U32 windowWidth, U32 windowHeight, bool fullScreen);
-    void    		                  OnWindowDestroy();
-    void    		                  OnWindowUpdate();
+    void                                  OnEvent(const Application::FocusEvent& event);
+    void                                  OnEvent(const Application::FocusLostEvent& event);
+    void                                  OnEvent(const Application::UpdateEvent& event);
+    void                                  OnEvent(const Application::KeyDownEvent& event);
  
     E_DISABLE_COPY_AND_ASSSIGNMENT(DebugWindow);
   };
 
-  typedef Singleton<DebugWindow> GDebugView;
+  typedef Singleton<DebugWindow> GDebugWindow;
 }
 #endif

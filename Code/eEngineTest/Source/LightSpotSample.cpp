@@ -56,7 +56,6 @@ void LightSpotSample::Load(IViewInstance window)
   ILogicComponentInstance cameraLogicComponent = sceneManager->CreateComponent(IObjectComponent::eComponentTypeLogic);
   mCameraHandler.SetCamera(mCamera);
   mCameraHandler.SetSpeed(50.0f);
-  mCameraHandler.SetSensitivity(0.015f);
   cameraLogicComponent->SetHandler(mCameraHandlerOwner);
   mCamera->AddComponent(cameraLogicComponent);
   mView->SetCamera(mCamera);
@@ -136,12 +135,10 @@ void LightSpotSample::Load(IViewInstance window)
 
 void LightSpotSample::Update()
 {
-  Input::IInputManagerInstance pInputManager = Input::Global::GetInputManager();
-
   F32 step = static_cast<F32>(mTimer.Reset().GetMilliseconds());
-  if (pInputManager->IsKeyDown(VK_ADD) || pInputManager->IsKeyDown(VK_SUBTRACT))
+  if (mInputManager.IsKeyDown(VK_ADD) || mInputManager.IsKeyDown(VK_SUBTRACT))
   {
-    if (pInputManager->IsKeyDown(VK_SUBTRACT)) step = -step;
+    if (mInputManager.IsKeyDown(VK_SUBTRACT)) step = -step;
     mCutOffAngle = Math::Clamp(mCutOffAngle + step * 0.02f, 0.0f, 60.0f);
     for (U32 i = 0; i < 4; ++i) mLightSpot[i]->SetCutOffAngle(mCutOffAngle);
   }

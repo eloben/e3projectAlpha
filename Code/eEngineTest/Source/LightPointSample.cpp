@@ -58,8 +58,6 @@ void LightPointSample::Load(IViewInstance window)
   mCamera->Rotate(Vector3f(10.0f, -25.0f, 0.0f));
   ILogicComponentInstance cameraLogicComponent = sceneManager->CreateComponent(IObjectComponent::eComponentTypeLogic);
   mCameraHandler.SetCamera(mCamera);
-  mCameraHandler.SetSpeed(50.0f);
-  mCameraHandler.SetSensitivity(0.015f);
   cameraLogicComponent->SetHandler(mCameraHandlerOwner);
   mCamera->AddComponent(cameraLogicComponent);
   mView->SetCamera(mCamera);

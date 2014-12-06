@@ -72,7 +72,7 @@ RenderTestApplication::~RenderTestApplication()
   mRenderManager->Finalize();
 }
 
-void RenderTestApplication::Initialize(U32 windowWidth, U32 windowHeight)
+void RenderTestApplication::Initialize(U32 width, U32 height)
 {
   // Configure render settings
   IRenderManager::Settings& renderSettings = Global::GetRenderManager()->GetSettings();
@@ -83,7 +83,7 @@ void RenderTestApplication::Initialize(U32 windowWidth, U32 windowHeight)
 
   // Create main window
   Application::Application& app = Application::Global::GetApplication();
-  mpWindow = app.CreateMainWindow(windowWidth, windowHeight);
+  mpWindow = app.CreateMainWindow(width, height);
   mpWindow->GetUpdateEventCallback() += this;
   mpWindow->GetKeyDownEventCallback() += this;
 
@@ -137,10 +137,10 @@ void RenderTestApplication::LoadTriangle()
   const Application::IWindow::Descriptor& windowDesc = mpWindow->GetDescriptor();
   mRenderManager->SetViewport(
     IRenderManager::eViewportID0,
-    windowDesc.windowHandle,
-    windowDesc.windowWidth,
-    windowDesc.windowHeight,
-    windowDesc.windowMode == Application::IWindow::eModeFullScreen);
+    windowDesc.handle,
+    windowDesc.width,
+    windowDesc.height,
+    windowDesc.mode == Application::IWindow::eModeFullScreen);
 
   mViewport = mRenderManager->GetViewport(IRenderManager::eViewportID0);
   ThrowIf(mViewport == nullptr, Exception::eExceptionTypeEngineTest);

@@ -26,41 +26,43 @@ DEALINGS IN THE SOFTWARE.
 // $Date: $
 // $Author: $
 
-/** @file TriangleSample.cpp
-This file defines the TriangleSample class.
+/** @file SampleBase.h
+This file declares the SampleBase class.
 */
 
-#include <EngineTestPch.h>
+#ifndef E3_SAMPLE_BASE_H
+#define E3_SAMPLE_BASE_H
 
-using namespace E;
-using namespace E::Graphics::Scene;
+#include "ISceneSample.h"
 
-/*----------------------------------------------------------------------------------------------------------------------
-TriangleSample methods
-----------------------------------------------------------------------------------------------------------------------*/
-
-void TriangleSample::Load(IViewInstance window)
+namespace E
 {
-  mView = window;
+  class SampleBase : public ISceneSample
+  {
+  public:
+    SampleBase() 
+      : mInputManager(Application::Global::GetInputManager())
+      , mSceneManager(Graphics::Scene::Global::GetSceneManager())
+      , mCameraHandlerOwner(&mCameraHandler) {}
 
-  // Create elements
-  ICameraInstance camera = mSceneManager->CreateObject(IObject::eObjectTypeCamera);
-  
-  camera->SetProjectionType(ICamera::eProjectionTypeOrthographic);
-  camera->Translate(Vector3f(0.0f, 0.0f, -0.5f * camera->GetFar()));
-   // Set active camera
-  mView->SetCamera(camera);
+    virtual void SetActive(bool b)
+    { 
+      mCameraHandler.SetActive(b);
+    }
 
-  // Create a triangle mesh
-  IMeshInstance mesh = mSceneManager->CreateObject(IObject::eObjectTypeMesh);
-  mesh->CreateTriangle(200.0f);
-  mesh->SetShader("ForwardDefault");
-  mSceneManager->GetWorld()->Load(mesh);
+    virtual void Unload() { mSceneManager->GetWorld()->Unload();  }
+    virtual void Update() {}
+
+  protected:
+    Application::InputManager&              mInputManager;
+    Graphics::Scene::ISceneManagerInstance  mSceneManager;
+    Graphics::Scene::IViewInstance          mView;
+    Graphics::Scene::CameraHandler          mCameraHandler;
+    Graphics::Scene::CameraHandlerOwner     mCameraHandlerOwner;
+    Graphics::Scene::ICameraInstance        mCamera;
+
+  private:      
+    E_DISABLE_COPY_AND_ASSSIGNMENT(SampleBase);
+  };
 }
-
-void TriangleSample::Unload()
-{
-  mSceneManager->GetWorld()->Unload();
-}
-
-void TriangleSample::Update() {}
+#endif

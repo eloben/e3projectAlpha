@@ -35,17 +35,12 @@ This file declares the MouseCameraSample class.
 
 namespace E
 {
-  class MouseCameraSample : public TriangleSample
+  class MouseCameraSample : public SampleBase
   {
   public:
-                                        MouseCameraSample();
- 
-    virtual void                        Load(Graphics::Scene::IViewInstance window);
+    MouseCameraSample() {}
 
-  protected:
-    Graphics::Scene::CameraHandler      mCameraHandler;
-    Graphics::Scene::CameraHandlerOwner mCameraHandlerOwner;
-    Graphics::Scene::ICameraInstance    mCamera;
+    virtual void  Load(Graphics::Scene::IViewInstance window);
 
     E_DISABLE_COPY_AND_ASSSIGNMENT(MouseCameraSample);
   };

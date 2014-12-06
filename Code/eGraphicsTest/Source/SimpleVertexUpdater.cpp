@@ -234,10 +234,10 @@ void SimpleVertexUpdater::InitializeDevice()
 
   // Viewport
   const Application::IWindow::Descriptor& windowDesc = mpWindow->GetDescriptor();
-  mViewportDescriptor.windowHandle = windowDesc.windowHandle;
-  mViewportDescriptor.width = windowDesc.windowWidth;
-  mViewportDescriptor.height = windowDesc.windowHeight;
-  mViewportDescriptor.flags = static_cast<U8>(windowDesc.windowMode == Application::IWindow::eModeFullScreen ? Graphics::IViewport::eViewportFlagEnableFullScreen : Graphics::IViewport::eViewportFlagEnableVerticalSync);
+  mViewportDescriptor.windowHandle = windowDesc.handle;
+  mViewportDescriptor.width = windowDesc.width;
+  mViewportDescriptor.height = windowDesc.height;
+  mViewportDescriptor.flags = static_cast<U8>(windowDesc.mode == Application::IWindow::eModeFullScreen ? Graphics::IViewport::eViewportFlagEnableFullScreen : Graphics::IViewport::eViewportFlagEnableVerticalSync);
   mViewport = mDevice->CreateViewport(mViewportDescriptor);
   ThrowIf(mViewport == nullptr, Exception::eExceptionTypeGraphicsTest);
 

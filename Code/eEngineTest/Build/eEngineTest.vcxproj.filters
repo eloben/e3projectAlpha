@@ -5,42 +5,15 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source\Samples">
+      <UniqueIdentifier>{77d5ed5c-bd1f-4896-bac0-cb2a27ac469c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\EngineTestPch.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\TriangleSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\VertexFormatSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\ChildMeshSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\MouseCameraSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\PhongSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\HighlightSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\MaterialSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\LightPointSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\LightSpotSample.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\LightSpotShadowSample.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\SampleApplication.cpp">
@@ -52,11 +25,41 @@
     <ClCompile Include="..\Source\RenderTestApplication.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\ChildMeshSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\HighlightSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\LightPointSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
     <ClCompile Include="..\Source\LightSample.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Samples</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\LightShadowSample.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\LightSpotSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\LightSpotShadowSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaterialSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MouseCameraSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\PhongSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\TriangleSample.cpp">
+      <Filter>Source\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\VertexFormatSample.cpp">
+      <Filter>Source\Samples</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -64,36 +67,6 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\ISceneSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\TriangleSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\VertexFormatSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\ChildMeshSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\MouseCameraSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\PhongSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\HighlightSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\MaterialSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\LightPointSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\LightSpotSample.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\LightSpotShadowSample.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\SampleApplication.h">
@@ -105,11 +78,44 @@
     <ClInclude Include="..\Source\RenderTestApplication.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\Source\ChildMeshSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\HighlightSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\LightPointSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
     <ClInclude Include="..\Source\LightSample.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Samples</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\LightShadowSample.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\LightSpotSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\LightSpotShadowSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaterialSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MouseCameraSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\PhongSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\TriangleSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\VertexFormatSample.h">
+      <Filter>Source\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\SampleBase.h">
+      <Filter>Source\Samples</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

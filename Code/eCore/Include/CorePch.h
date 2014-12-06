@@ -35,6 +35,7 @@ This file defines includes all the headers required by the Utilities library for
 ----------------------------------------------------------------------------------------------------------------------*/
 #include <Base.h>
 #include <Application/Application.h>
+#include <Application/InputManager.h>
 #include <Assertion/Assert.h>
 #include <Assertion/Exception.h>
 #include <Containers/Stack.h>

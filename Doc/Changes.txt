@@ -1,3 +1,15 @@
+2014-Dec-6 [e3project Alpha fix: InputManager & DebugWindow]
+- [Design] eUtil is now eCore.
+- [Implement] [eEngineTest] DebugWindow: no has a proper independent input.
+- [Implement] [eEngineTest] Updated samples.
+- [Refactor] [eEngine] Moved InputManager to Core inside the Application namespace and made it a pimpl in favor of interface.
+- [Implement] [eEngine] CameraHandler: adapted it to new IWindow system and added SetActive to handle window switching.
+- [Implement] [eCoreTest] added ConditionVariable test.
+- [Implement] [eCore] Application: remade it to be able to instance IWindow instances which can receive OS events (windows).
+
+2014-Nov-24 [Bugfix]
+- Fixed a major bug which prevented samples to properly run in release version.
+2014-Nov-23 [Major update: Preliminar alpha: VS 2013 and C++11]
 - [Design] Removed using namespace from E libraries.
 - [Design] Removed namespace identation.
 - [Design] All GCRef based returns are const reference unless a temporary object is returned (factory objects). This means that non-const methods (that modify this state) also return also const GCRef references.

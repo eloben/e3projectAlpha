@@ -35,7 +35,7 @@ This file declares the PhongSample class.
 
 namespace E
 {
-  class PhongSample : public MouseCameraSample
+  class PhongSample : public SampleBase
   {
   public:
     PhongSample() {}

@@ -41,6 +41,7 @@ This file defines includes all the headers required by the Engine test applicati
 
 #include <Base.h>
 #include <Application/Application.h>
+#include <Application/InputManager.h>
 #include <Assertion/Exception.h>
 #include <FileSystem/File.h>
 #include <Math/Matrix4.h>
@@ -60,7 +61,6 @@ This file defines includes all the headers required by the Engine test applicati
 ----------------------------------------------------------------------------------------------------------------------*/
 
 #include <Graphics/Render.h>
-#include <Input/Input.h>
 #include <Graphics/Scene/ICamera.h>
 #include <Graphics/Scene/ILight.h>
 #include <Graphics/Scene/ILightPoint.h>
@@ -80,7 +80,7 @@ This file defines includes all the headers required by the Engine test applicati
 /*----------------------------------------------------------------------------------------------------------------------
 [EngineTest] (samples: order dependent)
 ----------------------------------------------------------------------------------------------------------------------*/
-#include "ISceneSample.h"
+#include "SampleBase.h"
 #include "TriangleSample.h"
 #include "VertexFormatSample.h"
 #include "ChildMeshSample.h"

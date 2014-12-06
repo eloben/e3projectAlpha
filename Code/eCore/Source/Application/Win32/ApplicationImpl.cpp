@@ -183,7 +183,7 @@ Application::Impl::~Impl()
 Application methods
 ----------------------------------------------------------------------------------------------------------------------*/
 
-IWindow* Application::Impl::CreateChildWindow(U32 windowWidth, U32 windowHeight)
+IWindow* Application::Impl::CreateChildWindow(U32 width, U32 height)
 {
   if (mpMainWindow == nullptr)
   {
@@ -193,27 +193,27 @@ IWindow* Application::Impl::CreateChildWindow(U32 windowWidth, U32 windowHeight)
   }
 
   IWindow::Descriptor windowDesc;
-  windowDesc.windowMode = IWindow::eModeDefault;
-  windowDesc.windowWidth = windowWidth;
-  windowDesc.windowHeight = windowHeight;
+  windowDesc.mode = IWindow::eModeDefault;
+  windowDesc.width = width;
+  windowDesc.height = height;
   
-  return CreateApplicationWindow(windowDesc, static_cast<HWND>(mpMainWindow->GetDescriptor().windowHandle));
+  return CreateApplicationWindow(windowDesc, static_cast<HWND>(mpMainWindow->GetDescriptor().handle));
 }
 
 IWindow* Application::Impl::CreateMainWindow()
 {
   IWindow::Descriptor windowDesc;
-  windowDesc.windowMode = IWindow::eModeFullScreen;
+  windowDesc.mode = IWindow::eModeFullScreen;
   mpMainWindow = CreateApplicationWindow(windowDesc, nullptr);
   mExitFlag = mpMainWindow == nullptr;
   return mpMainWindow;
 }
 
-IWindow* Application::Impl::CreateMainWindow(U32 windowWidth, U32 windowHeight)
+IWindow* Application::Impl::CreateMainWindow(U32 width, U32 height)
 {
   IWindow::Descriptor windowDesc;
-  windowDesc.windowWidth = windowWidth;
-  windowDesc.windowHeight = windowHeight;
+  windowDesc.width = width;
+  windowDesc.height = height;
   mpMainWindow = CreateApplicationWindow(windowDesc, nullptr);
   mExitFlag = mpMainWindow == nullptr;
 
@@ -223,7 +223,7 @@ IWindow* Application::Impl::CreateMainWindow(U32 windowWidth, U32 windowHeight)
 void Application::Impl::DestroyWindow(IWindow* pWindow)
 {
   E_ASSERT_PTR(pWindow);
-  ::DestroyWindow(static_cast<HWND>(pWindow->GetDescriptor().windowHandle));
+  ::DestroyWindow(static_cast<HWND>(pWindow->GetDescriptor().handle));
   mWindowList.RemoveIfFast(static_cast<Window*>(pWindow));
   if (pWindow == mpMainWindow)
   {
@@ -239,7 +239,7 @@ void Application::Impl::Terminate()
     // If the specified window is a parent or owner window, DestroyWindow automatically destroys the associated child or 
     // owned windows when it destroys the parent or owner window. The function first destroys child or owned windows, 
     // and then it destroys the parent or owner window.
-    ::DestroyWindow(static_cast<HWND>(mpMainWindow->GetDescriptor().windowHandle));
+    ::DestroyWindow(static_cast<HWND>(mpMainWindow->GetDescriptor().handle));
     mWindowList.Clear();
     mpMainWindow = nullptr;
     mExitFlag = true;
@@ -310,7 +310,7 @@ Window* Application::Impl::CreateApplicationWindow(IWindow::Descriptor& windowDe
   U32 windowCanvasSizeY = 0;
   WString windowTitleWstr;
 
-  if (windowDesc.windowMode == IWindow::eModeFullScreen)
+  if (windowDesc.mode == IWindow::eModeFullScreen)
   {
     // Calculate windowCanvas size from screen
     windowCanvasSizeX = GetSystemMetrics(SM_CXSCREEN);
@@ -329,16 +329,16 @@ Window* Application::Impl::CreateApplicationWindow(IWindow::Descriptor& windowDe
     ::ChangeDisplaySettings(&screenSettings, CDS_FULLSCREEN);
 
     // Update window descriptor
-    windowDesc.windowWidth = windowCanvasSizeX;
-    windowDesc.windowHeight = windowCanvasSizeY;
+    windowDesc.width = windowCanvasSizeX;
+    windowDesc.height = windowCanvasSizeY;
   }
   else
   {
-    if (windowDesc.windowMode == IWindow::eModeWindowless)
+    if (windowDesc.mode == IWindow::eModeWindowless)
     {
       windowCanvasStyle = WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP;
-      windowCanvasSizeX = windowDesc.windowWidth;
-      windowCanvasSizeY = windowDesc.windowHeight;
+      windowCanvasSizeX = windowDesc.width;
+      windowCanvasSizeY = windowDesc.height;
     }
     else
     {
@@ -348,14 +348,14 @@ Window* Application::Impl::CreateApplicationWindow(IWindow::Descriptor& windowDe
       RECT rc;
       rc.left   = 0;
       rc.top    = 0;
-      rc.right  = windowDesc.windowWidth;
-      rc.bottom = windowDesc.windowHeight;
+      rc.right  = windowDesc.width;
+      rc.bottom = windowDesc.height;
       ::AdjustWindowRect(&rc, windowCanvasStyle, false);
       windowCanvasSizeX = (rc.right - rc.left);
       windowCanvasSizeY = (rc.bottom - rc.top);
 
       // Set window title
-      Text::Utf8ToWide(windowTitleWstr, windowDesc.windowTitle);
+      Text::Utf8ToWide(windowTitleWstr, windowDesc.title);
     }
   }
 
@@ -381,7 +381,7 @@ Window* Application::Impl::CreateApplicationWindow(IWindow::Descriptor& windowDe
 
   // Create the window passing this as lpParam to allow the static WindowProc function accessing the Application instance. 
   // This way we will be able to use Application object stats through the WindowWindowProc.
-  windowDesc.windowHandle = ::CreateWindow(
+  windowDesc.handle = ::CreateWindow(
     kApplicationName.GetPtr(),
     windowTitleWstr.GetPtr(),
     windowCanvasStyle,
@@ -395,7 +395,7 @@ Window* Application::Impl::CreateApplicationWindow(IWindow::Descriptor& windowDe
     pWindow);
 
   // Bail on error
-  if (!windowDesc.windowHandle)
+  if (!windowDesc.handle)
   {
     mWindowFactory.Destroy(pWindow);
     ::MessageBox(::GetActiveWindow(), kApplicationWindowInitializationErrorMessage.GetPtr(), kApplicationErrorTitle.GetPtr(), MB_OK);
@@ -409,7 +409,7 @@ Window* Application::Impl::CreateApplicationWindow(IWindow::Descriptor& windowDe
   if (!mpMainWindow) mpMainWindow = pWindow;
 
   // Bring the window up on the screen and set the focus to the main window
-  HWND windowHandle = static_cast<HWND>(windowDesc.windowHandle);
+  HWND windowHandle = static_cast<HWND>(windowDesc.handle);
   ::ShowWindow(windowHandle, SW_SHOW);
   ::SetForegroundWindow(windowHandle);
   if (parentWindowHandle == 0) ::SetFocus(windowHandle);

@@ -59,7 +59,7 @@ const WString kApplicationWindowExceptionMessage(L"Window exception");
 const U32     kApplicationWindowDistance = 10;
 
 /*----------------------------------------------------------------------------------------------------------------------
-Application initialization & finalization
+Application private initialization & finalization
 ----------------------------------------------------------------------------------------------------------------------*/
 
 Application::Application() : mpImpl(new Impl) {}
@@ -69,9 +69,9 @@ Application::~Application() {}
 /*----------------------------------------------------------------------------------------------------------------------
 Application methods
 ----------------------------------------------------------------------------------------------------------------------*/
-IWindow* Application::CreateChildWindow(U32 windowWidth, U32 windowHeight)
+IWindow* Application::CreateChildWindow(U32 width, U32 height)
 {
-  return mpImpl->CreateChildWindow(windowWidth, windowHeight);
+  return mpImpl->CreateChildWindow(width, height);
 }
 
 IWindow* Application::CreateMainWindow()
@@ -79,9 +79,9 @@ IWindow* Application::CreateMainWindow()
   return mpImpl->CreateMainWindow();
 }
 
-IWindow* Application::CreateMainWindow(U32 windowWidth, U32 windowHeight)
+IWindow* Application::CreateMainWindow(U32 width, U32 height)
 {
-  return mpImpl->CreateMainWindow(windowWidth, windowHeight);
+  return mpImpl->CreateMainWindow(width, height);
 }
 
 void Application::DestroyWindow(IWindow* pWindow)

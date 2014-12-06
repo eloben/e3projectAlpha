@@ -41,7 +41,7 @@ ChildMeshSample methods
 
 ChildMeshSample::ChildMeshSample()
   : mScale(1)
-  , mSpeed(0.1f)
+  , mSpeed(0.05f)
   , mSelectedOperation(0)
   , mSelectedAxis(0) {}
 
@@ -53,20 +53,20 @@ void ChildMeshSample::Load(IViewInstance window)
   // Create elements
   mCamera = sceneManager->CreateObject(IObject::eObjectTypeCamera);
   
-  mCamera->Translate(Vector3f(0.0f, 50.0f, -0.5f * mCamera->GetFar()));
+  mCamera->Translate(Vector3f(0.0f, 0.0f, -50.0f));
   mView->SetCamera(mCamera);
 
   // Create a cube mesh
   mMesh = sceneManager->CreateObject(IObject::eObjectTypeMesh);
-  mMesh->CreateCube(200.0f);
+  mMesh->CreateCube(20.0f);
   IMaterialInstance material = mSceneManager->CreateMaterial();
   material->SetDiffuseTexture(mSceneManager->GetTexture2D("test.png"));
   mMesh->SetMaterial(material);
   
   // Create a child sphere mesh
   /*IMeshInstance*/ childMesh = sceneManager->CreateObject(IObject::eObjectTypeMesh);
-  childMesh->CreateSphere(75.0f, 16, 16);
-  childMesh->Translate(Vector3f(0.0f, 200.0f, 0.0f));
+  childMesh->CreateSphere(7.5f, 16, 16);
+  childMesh->Translate(Vector3f(0.0f, 20.0f, 0.0f));
   childMesh->SetMaterial(material);
   // Do not load child manually!
   
@@ -91,41 +91,39 @@ void ChildMeshSample::Load(IViewInstance window)
 
 void ChildMeshSample::Update()
 {
-  Input::IInputManagerInstance pInputManager = Input::Global::GetInputManager();
-
   F32 step = mSpeed * static_cast<F32>(mTimer.Reset().GetMilliseconds());
-  if (pInputManager->IsKeyDown('W')) mCamera->Translate(Vector3f(0.0f, step, 0.0f));
-  if (pInputManager->IsKeyDown('S')) mCamera->Translate(Vector3f(0.0f, -step, 0.0f));
-  if (pInputManager->IsKeyDown('A')) mCamera->Translate(Vector3f(-step, 0.0f, 0.0f));
-  if (pInputManager->IsKeyDown('D')) mCamera->Translate(Vector3f(step, 0.0f, 0.0f));
-  if (pInputManager->IsKeyDown('Q')) mCamera->Translate(Vector3f(0.0f, 0.0f, step));
-  if (pInputManager->IsKeyDown('E')) mCamera->Translate(Vector3f(0.0f, 0.0f, -step));
-  if (pInputManager->IsKeyDown('R'))
+//   if (mInputManager.IsKeyDown('W')) mCamera->Translate(Vector3f(0.0f, step, 0.0f));
+//   if (mInputManager.IsKeyDown('S')) mCamera->Translate(Vector3f(0.0f, -step, 0.0f));
+//   if (mInputManager.IsKeyDown('A')) mCamera->Translate(Vector3f(-step, 0.0f, 0.0f));
+//   if (mInputManager.IsKeyDown('D')) mCamera->Translate(Vector3f(step, 0.0f, 0.0f));
+  if (mInputManager.IsKeyDown('Q')) mCamera->Translate(Vector3f(0.0f, 0.0f, step));
+  if (mInputManager.IsKeyDown('E')) mCamera->Translate(Vector3f(0.0f, 0.0f, -step));
+  if (mInputManager.IsKeyDown('R'))
   {
     mOrientation.Set(0);
     mScale.Set(1);
     mPosition.Set(0);
   }
 
-  if (pInputManager->IsKeyReleased('1')) mSelectedAxis = 0;
-  if (pInputManager->IsKeyReleased('2')) mSelectedAxis = 1;
-  if (pInputManager->IsKeyReleased('3')) mSelectedAxis = 2;
-  if (pInputManager->IsKeyReleased('4')) mSelectedOperation = 0;
-  if (pInputManager->IsKeyReleased('5')) mSelectedOperation = 1;
-  if (pInputManager->IsKeyReleased('6')) mSelectedOperation = 2;
+  if (mInputManager.IsKeyReleased('1')) mSelectedAxis = 0;
+  if (mInputManager.IsKeyReleased('2')) mSelectedAxis = 1;
+  if (mInputManager.IsKeyReleased('3')) mSelectedAxis = 2;
+  if (mInputManager.IsKeyReleased('4')) mSelectedOperation = 0;
+  if (mInputManager.IsKeyReleased('5')) mSelectedOperation = 1;
+  if (mInputManager.IsKeyReleased('6')) mSelectedOperation = 2;
 
-  if (pInputManager->IsKeyDown(VK_ADD) || pInputManager->IsKeyDown(VK_SUBTRACT))
+  if (mInputManager.IsKeyDown(VK_ADD) || mInputManager.IsKeyDown(VK_SUBTRACT))
   {
-    if (pInputManager->IsKeyDown(VK_SUBTRACT)) step = -step;
+    if (mInputManager.IsKeyDown(VK_SUBTRACT)) step = -step;
 
     // Rotation
     if (mSelectedOperation == 0)
     {
       switch (mSelectedAxis)
       {
-      case 0: mOrientation.x += step; break;
-      case 1: mOrientation.y += step; break;
-      case 2: mOrientation.z += step; break;
+      case 0: mOrientation.x += step * 2.0f; break;
+      case 1: mOrientation.y += step * 2.0f; break;
+      case 2: mOrientation.z += step * 2.0f; break;
       }
     }
     // Scaling
@@ -135,9 +133,9 @@ void ChildMeshSample::Update()
 
       switch (mSelectedAxis)
       {
-      case 0: mScale.x += step * 0.1f; break;
-      case 1: mScale.y += step * 0.1f; break;
-      case 2: mScale.z += step * 0.1f; break;
+      case 0: mScale.x += step; break;
+      case 1: mScale.y += step; break;
+      case 2: mScale.z += step; break;
       }
     }
     // Translation

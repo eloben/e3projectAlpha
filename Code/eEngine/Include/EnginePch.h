@@ -37,6 +37,7 @@ This file defines includes all the headers required by the Engine library for pr
 [Utilities]
 ----------------------------------------------------------------------------------------------------------------------*/
 #include <Base.h>
+#include <Application/InputManager.h>
 #include <Assertion/Assert.h>
 #include <Containers/Queue.h>
 #include <FileSystem/File.h>
@@ -64,7 +65,6 @@ This file defines includes all the headers required by the Engine library for pr
 [Engine]
 ----------------------------------------------------------------------------------------------------------------------*/
 
-#include <Input/Input.h>
 #include <Graphics/Render.h>
 #include <Graphics/Scene/ICamera.h>
 #include <Graphics/Scene/ILight.h>

@@ -35,7 +35,7 @@ This file declares the LightSample class.
 
 namespace E
 {
-  class LightSample : public MouseCameraSample
+  class LightSample : public SampleBase
   {
   public:
     LightSample() {}
@@ -45,7 +45,7 @@ namespace E
 
   protected:
     Time::Timer                       mTimer;
-    Graphics::Scene::ILightInstance  mLight[4];
+    Graphics::Scene::ILightInstance   mLight[4];
 
     E_DISABLE_COPY_AND_ASSSIGNMENT(LightSample);
   };

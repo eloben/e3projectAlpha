@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\..\ThirdParty\pugixml\pugixml.hpp" />
     <ClInclude Include="..\Include\Application\Application.h" />
     <ClInclude Include="..\Include\Application\Input.h" />
+    <ClInclude Include="..\Include\Application\InputManager.h" />
     <ClInclude Include="..\Include\Application\Win32\InputImpl.h" />
     <ClInclude Include="..\Include\Assertion\Assert.h" />
     <ClInclude Include="..\Include\Assertion\Exception.h" />
@@ -90,6 +91,7 @@
     <ClInclude Include="..\Include\WeakPtr.h" />
     <ClInclude Include="..\Include\Win32\ComUtil.h" />
     <ClInclude Include="..\Source\Application\Win32\ApplicationImpl.h" />
+    <ClInclude Include="..\Source\Application\Win32\InputManagerImpl.h" />
     <ClInclude Include="..\Source\FileSystem\Win32\FileImpl.h" />
     <ClInclude Include="..\Source\Serialization\XmlSerializerImpl.h" />
     <ClInclude Include="..\Source\Text\StringImpl.h" />
@@ -102,7 +104,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\ThirdParty\pugixml\pugixml.cpp" />
     <ClCompile Include="..\Source\Application\Application.cpp" />
+    <ClCompile Include="..\Source\Application\InputManager.cpp" />
     <ClCompile Include="..\Source\Application\Win32\ApplicationImpl.cpp" />
+    <ClCompile Include="..\Source\Application\Win32\InputManagerImpl.cpp" />
     <ClCompile Include="..\Source\FileSystem\Archive.cpp" />
     <ClCompile Include="..\Source\FileSystem\File.cpp" />
     <ClCompile Include="..\Source\FileSystem\Win32\FileImpl.cpp" />

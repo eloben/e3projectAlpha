@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
-This source file is part of the E3 Input
+This source file is part of the E3 Project
 
-Copyright (c) 2010-2014 Elías Lozada-Benavente
+Copyright (c) 2010-2014 ElÃ­as Lozada-Benavente
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this 
 software and associated documentation files (the "Software"), to deal in the Software 
@@ -20,34 +20,29 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 ----------------------------------------------------------------------------------------------------------------------*/
 
-// Created 24-Jun-2014 by Elías Lozada-Benavente
+// Created 04-Jan-2014 by ElÃ­as Lozada-Benavente
 // 
 // $Revision: $
 // $Date: $
 // $Author: $
 
-/** @file Input.h
-This file declares the Engine library input accessor methods. Input provides global access to the library through a unique 
-IRenderManager interface pointer to a concrete implementation.
+/** @file ConditionVariable.h
+This file declares ConditionVariable test functions.
 */
 
-#ifndef E3_ENGINE_INPUT_H
-#define E3_ENGINE_INPUT_H
+#ifndef E3_TEST_CONDITION_VARIABLE_H
+#define E3_TEST_CONDITION_VARIABLE_H
 
-#include <Input/IInputManager.h>
-
-namespace E 
+namespace E
 {
-namespace Input
-{
-/*----------------------------------------------------------------------------------------------------------------------
-Input API methods
-----------------------------------------------------------------------------------------------------------------------*/
-namespace Global
-{
-  E_API IInputManagerInstance GetInputManager();
+  namespace Test
+  {
+    namespace ConditionVariable
+    {
+      bool Run();
+      bool RunFunctionalityTest();
+      bool RunPerformanceTest();
+    }
+  }
 }
-}
-}
-
 #endif

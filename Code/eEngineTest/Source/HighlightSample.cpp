@@ -50,6 +50,7 @@ void HighlightSample::Load(IViewInstance window)
   mCamera->Translate(Vector3f(0.0f, 0.0f, -7.5f));
   ILogicComponentInstance cameraLogicComponent = sceneManager->CreateComponent(IObjectComponent::eComponentTypeLogic);
   mCameraHandler.SetCamera(mCamera);
+  mCameraHandler.SetSpeed(1.0f);
   cameraLogicComponent->SetHandler(mCameraHandlerOwner);
   mCamera->AddComponent(cameraLogicComponent);
   mView->SetCamera(mCamera);
@@ -72,16 +73,14 @@ void HighlightSample::Load(IViewInstance window)
 
 void HighlightSample::Update()
 {
-  Input::IInputManagerInstance pInputManager = Input::Global::GetInputManager();
-
   F32 step = static_cast<F32>(mTimer.Reset().GetMilliseconds());
-  if (pInputManager->IsKeyReleased(VK_ADD))
+  if (mInputManager.IsKeyUp(VK_ADD))
   {
     mCubeMaterial->SetSmoothness(mCubeMaterial->GetSmoothness() + 0.05f);
     mSceneManager->GetWorld()->Unload(mCube);
     mSceneManager->GetWorld()->Load(mCube);
   }
-  else if (pInputManager->IsKeyReleased(VK_SUBTRACT))
+  else if (mInputManager.IsKeyUp(VK_SUBTRACT))
   {
     mCubeMaterial->SetSmoothness(mCubeMaterial->GetSmoothness() - 0.05f);
     mSceneManager->GetWorld()->Unload(mCube);

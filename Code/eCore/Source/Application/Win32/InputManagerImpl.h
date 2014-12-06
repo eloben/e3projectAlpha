@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
 This source file is part of the E3 Engine
 
-Copyright (c) 2010-2014 ElÃ­as Lozada-Benavente
+Copyright (c) 2010-2014 Elías Lozada-Benavente
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this 
 software and associated documentation files (the "Software"), to deal in the Software 
@@ -18,49 +18,57 @@ PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS 
 FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 DEALINGS IN THE SOFTWARE.
-----------------------------------------------------------------------------------------------------------------------*/
+------------------------------------------------------------------------------------------------------------------------*/
 
-// Created 08-Sep-2014 by ElÃ­as Lozada-Benavente
+// Create 14-Aug-2014 by Elías Lozada-Benavente
+// Original 04-Dec-2011 by Elías Lozada-Benavente
 // 
 // $Revision: $
 // $Date: $
 // $Author: $
 
-/** @file TriangleSample.cpp
-This file defines the TriangleSample class.
+/** @file InputManager.h
+This file declares the InputManager class.
 */
 
-#include <EngineTestPch.h>
+#ifndef E3_INPUT_MANAGER_IMPLH
+#define E3_INPUT_MANAGER_IMPLH
 
-using namespace E;
-using namespace E::Graphics::Scene;
-
+namespace E 
+{
+namespace Application
+{
 /*----------------------------------------------------------------------------------------------------------------------
-TriangleSample methods
+InputManager::Impl
 ----------------------------------------------------------------------------------------------------------------------*/
-
-void TriangleSample::Load(IViewInstance window)
+class InputManager::Impl : public Memory::ProxyAllocated
 {
-  mView = window;
+public:
+                    Impl();
+       //             ~Impl();
 
-  // Create elements
-  ICameraInstance camera = mSceneManager->CreateObject(IObject::eObjectTypeCamera);
-  
-  camera->SetProjectionType(ICamera::eProjectionTypeOrthographic);
-  camera->Translate(Vector3f(0.0f, 0.0f, -0.5f * camera->GetFar()));
-   // Set active camera
-  mView->SetCamera(camera);
+  // Accessors
+  const Vector2i&   GetCursorPosition() const;
+  bool			        IsKeyDown(U8 key) const;
+  bool              IsKeyReleased(U8 key) const;
+  bool			        IsKeyUp(U8 key) const;
+  void              SetActiveWindow(IWindow* pWindow);
 
-  // Create a triangle mesh
-  IMeshInstance mesh = mSceneManager->CreateObject(IObject::eObjectTypeMesh);
-  mesh->CreateTriangle(200.0f);
-  mesh->SetShader("ForwardDefault");
-  mSceneManager->GetWorld()->Load(mesh);
+  // Methods
+  void			        CenterCursor();
+  void              Update();
+
+private:
+  static const U32  kKeyBufferSize = 256;
+
+  IWindow::Descriptor mWindowDescriptor;
+  U8				        mKeys[kKeyBufferSize];
+  U8				        mLastKeys[kKeyBufferSize];
+  Vector2i		      mCursorPosition;
+
+  E_DISABLE_COPY_AND_ASSSIGNMENT(Impl)
+};
+}
 }
 
-void TriangleSample::Unload()
-{
-  mSceneManager->GetWorld()->Unload();
-}
-
-void TriangleSample::Update() {}
+#endif

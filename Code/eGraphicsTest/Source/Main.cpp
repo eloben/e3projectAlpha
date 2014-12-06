@@ -40,8 +40,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
   Win32::Application winApp;
   Win32::Application::WindowDescriptor windowDesc;
   windowDesc.windowTitle = "Gpu Test - Main Window";
-  windowDesc.windowWidth = 640;
-  windowDesc.windowHeight = 480;
+  windowDesc.width = 640;
+  windowDesc.height = 480;
   
   SimpleVertexUpdater simpleVertexUpdater;
   windowDesc.pWindowHandler = &simpleVertexUpdater;

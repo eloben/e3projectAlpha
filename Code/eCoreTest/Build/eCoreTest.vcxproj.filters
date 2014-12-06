@@ -118,6 +118,9 @@
     <ClCompile Include="..\Source\Test\Memory\GarbageCollection.cpp">
       <Filter>Source\Test\Memory</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Test\Threads\ConditionVariable.cpp">
+      <Filter>Source\Test\Threads</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Test\EventSystem\Event.h">
@@ -197,6 +200,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Test\Memory\GarbageCollection.h">
       <Filter>Source\Test\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Test\Threads\ConditionVariable.h">
+      <Filter>Source\Test\Threads</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

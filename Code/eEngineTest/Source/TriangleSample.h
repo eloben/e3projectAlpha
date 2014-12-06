@@ -35,18 +35,14 @@ This file declares the TriangleSample class.
 
 namespace E
 {
-  class TriangleSample : public ISceneSample
+  class TriangleSample : public SampleBase
   {
   public:
-    TriangleSample();
+    TriangleSample() {}
 
     virtual void                            Load(Graphics::Scene::IViewInstance window);
     virtual void                            Unload();
     virtual void	                          Update();
-
-  protected:
-    Graphics::Scene::IViewInstance          mView;
-    Graphics::Scene::ISceneManagerInstance  mSceneManager;
 
   private:      
     E_DISABLE_COPY_AND_ASSSIGNMENT(TriangleSample);

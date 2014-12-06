@@ -40,13 +40,19 @@ CameraHandler initialization & finalization
 ----------------------------------------------------------------------------------------------------------------------*/
 
 Graphics::Scene::CameraHandler::CameraHandler()
-  : mInputManager(Input::Global::GetInputManager())
-  , mSpeed(0.01f)
+  : mInputManager(Application::Global::GetInputManager())
+  , mSpeed(100.0f)
   , mSensitivity(0.25f) {}
 
 /*----------------------------------------------------------------------------------------------------------------------
 CameraHandler accessors
 ----------------------------------------------------------------------------------------------------------------------*/
+
+void Graphics::Scene::CameraHandler::SetActive(bool b)
+{
+  mActive = b;
+  if (mActive) mLastCursorPosition = mInputManager.GetCursorPosition();
+}
 
 void Graphics::Scene::CameraHandler::SetCamera(const ICameraInstance& camera)
 {
@@ -67,6 +73,21 @@ void Graphics::Scene::CameraHandler::SetSpeed(F32 unitsPerSecond)
 CameraHandler methods
 ----------------------------------------------------------------------------------------------------------------------*/
 
+void Graphics::Scene::CameraHandler::Move(MoveDirection dir)
+{
+//   /**/
+//   F32 forwardSpeed = 0.0f;
+//   F32 strafeSpeed = 0.0f;
+//   if (dir & eMoveDirectionForward) forwardSpeed += mSpeed;
+//   if (dir & eMoveDirectionBackwards) forwardSpeed -= mSpeed;
+//   if (dir & eMoveDirectionLeft) strafeSpeed -= mSpeed;
+//   if (dir & eMoveDirectionRight) strafeSpeed += mSpeed;
+
+  mMove |= dir;
+
+  //mTranslation = mCamera->GetAxisZ() * forwardSpeed + mCamera->GetAxisX() * strafeSpeed * Math::kSqrt2Div2f;
+}
+
 void Graphics::Scene::CameraHandler::OnLoad() {}
 
 void Graphics::Scene::CameraHandler::OnUnload() {}
@@ -74,15 +95,22 @@ void Graphics::Scene::CameraHandler::OnUnload() {}
 void Graphics::Scene::CameraHandler::OnUpdate(const TimeValue& deltaTime)
 {
   E_ASSERT_PTR(mCamera);
-  if (mCamera)
+  if (mActive && mCamera)
   {
     F32 timeStep = static_cast<F32>(deltaTime.GetMilliseconds());
+
     F32 forwardSpeed = 0.0f;
     F32 strafeSpeed = 0.0f;
-    if (mInputManager->IsKeyDown('W')) forwardSpeed += mSpeed;
-    if (mInputManager->IsKeyDown('S')) forwardSpeed -= mSpeed;
-    if (mInputManager->IsKeyDown('A')) strafeSpeed -= mSpeed;
-    if (mInputManager->IsKeyDown('D')) strafeSpeed += mSpeed;
+    if (mInputManager.IsKeyDown('W')) forwardSpeed += mSpeed;
+    if (mInputManager.IsKeyDown('S')) forwardSpeed -= mSpeed;
+    if (mInputManager.IsKeyDown('A')) strafeSpeed -= mSpeed;
+     if (mInputManager.IsKeyDown('D')) strafeSpeed += mSpeed;
+     /**/
+//     if (mMove & eMoveDirectionForward) forwardSpeed += mSpeed;
+//     if (mMove & eMoveDirectionBackwards) forwardSpeed -= mSpeed;
+//     if (mMove & eMoveDirectionLeft) strafeSpeed -= mSpeed;
+//     if (mMove & eMoveDirectionRight) strafeSpeed += mSpeed;
+//     mMove = eMoveDirectionNone;
 
     // Calculate translation delta
     Vector3f  translationDelta = mCamera->GetAxisZ() * forwardSpeed + mCamera->GetAxisX() * strafeSpeed * Math::kSqrt2Div2f;
@@ -91,10 +119,10 @@ void Graphics::Scene::CameraHandler::OnUpdate(const TimeValue& deltaTime)
     // Update camera position
     mCamera->Translate(translationDelta);
 
-    if (mInputManager->IsKeyDown(MK_LBUTTON))
+    if (mInputManager.IsKeyDown(MK_LBUTTON))
     {	
       // Calculate rotation delta
-      const Vector2i& currentMousePosition = mInputManager->GetCursonPosition();
+      const Vector2i& currentMousePosition = mInputManager.GetCursorPosition();
       Vector3f rotationDelta(
         static_cast<F32>(currentMousePosition.y - mLastCursorPosition.y),
        // 0.0f,
@@ -111,6 +139,6 @@ void Graphics::Scene::CameraHandler::OnUpdate(const TimeValue& deltaTime)
       }
     }
     // Update cursor position
-    mLastCursorPosition = mInputManager->GetCursonPosition();
+    mLastCursorPosition = mInputManager.GetCursorPosition();
   }
 }
